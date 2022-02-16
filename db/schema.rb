@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 2022_02_13_105424) do
 
   create_table "answers", force: :cascade do |t|
-    t.string "correct", default: "42"
+    t.boolean "correct", default: false
+    t.text "body"
     t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -21,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_105424) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", default: "Common"
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
