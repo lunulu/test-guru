@@ -24,21 +24,21 @@
 @question4 = @test4.questions.create(body: 'Каким является следующий адрес ссылки: pages/page2.html')
 @question5 = @test5.questions.create(body: 'Какое свойство CSS определяет размер текста')
 
-@answer11 = @question1.answers.create(body: 'Fixnum')
-@answer12 = @question1.answers.create(body: 'Integer', correct: true)
-@answer21 = @question2.answers.create(body: 'rails db:rollback')
-@answer22 = @question2.answers.create(body: 'rails db:migrate:redo', correct: true)
-@answer31 = @question3.answers.create(body: 'Строке')
-@answer32 = @question3.answers.create(body: 'Цифре', correct: true)
-@answer41 = @question4.answers.create(body: 'Абсолютным')
-@answer42 = @question4.answers.create(body: 'Относительным', correct: true)
-@answer51 = @question5.answers.create(body: 'text-size')
-@answer52 = @question5.answers.create(body: 'font-size', correct: true)
+@question1.answers.create(body: 'Fixnum')
+@question1.answers.create(body: 'Integer', correct: true)
+@question2.answers.create(body: 'rails db:rollback')
+@question2.answers.create(body: 'rails db:migrate:redo', correct: true)
+@question3.answers.create(body: 'Строке')
+@question3.answers.create(body: 'Цифре', correct: true)
+@question4.answers.create(body: 'Абсолютным')
+@question4.answers.create(body: 'Относительным', correct: true)
+@question5.answers.create(body: 'text-size')
+@question5.answers.create(body: 'font-size', correct: true)
 
-@user1.user_tests_histories.create([{ test: @test1, completed: true },
-                                    { test: @test3, completed: false }])
-@user2.user_tests_histories.create([{ test: @test1, completed: true },
-                                    { test: @test2, completed: true },
-                                    { test: @test3, completed: true },
-                                    { test: @test4, completed: true },
-                                    { test: @test5, completed: true }])
+@user1.test_passages.create([{ test: @test1, completed: true },
+                             { test: @test3, completed: false }])
+@user2.test_passages.create([{ test: @test1, completed: true },
+                             { test: @test2, completed: true },
+                             { test: @test3, completed: true },
+                             { test: @test4, completed: true },
+                             { test: @test5, completed: true }])
