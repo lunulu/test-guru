@@ -35,6 +35,10 @@
 @answer51 = @question5.answers.create(body: 'text-size')
 @answer52 = @question5.answers.create(body: 'font-size', correct: true)
 
-@user1.user_tests_histories.create(test: @test1, completed: true)
-@user1.user_tests_histories.create(test: @test3, completed: false)
-@user2.user_tests_histories.create(test: @test2, completed: true)
+@user1.user_tests_histories.create([{ test: @test1, completed: true },
+                                    { test: @test3, completed: false }])
+@user2.user_tests_histories.create([{ test: @test1, completed: true },
+                                    { test: @test2, completed: true },
+                                    { test: @test3, completed: true },
+                                    { test: @test4, completed: true },
+                                    { test: @test5, completed: true }])
