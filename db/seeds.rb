@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(name: 'Ruslan', age: 22, email: 'fairus200599@gmail.com')
-User.create(name: 'Almighty', age: 42, email: 'dont@need.it')
+@user1 = User.create(name: 'Ruslan', age: 22, email: 'fairus200599@gmail.com')
+@user2 = User.create(name: 'Almighty', age: 42, email: 'dont@need.it')
 
 @backend = Category.create(title: 'Backend')
 @frontend = Category.create(title: 'Frontend')
@@ -18,19 +18,23 @@ User.create(name: 'Almighty', age: 42, email: 'dont@need.it')
 @test4 = @frontend.tests.create(title: 'HTML', level: 0)
 @test5 = @frontend.tests.create(title: 'CSS', level: 1)
 
-Question.create([{ body: 'Что вернет 2.superclass в версии Ruby 3.0?', test_id: 1 },
-                 { body: 'Команда для отката миграций назад и обратно', test_id: 2 },
-                 { body: 'Чему равно значение выражения 4 - "5" + 0xf - "1e1"?', test_id: 3 },
-                 { body: 'Каким является следующий адрес ссылки: pages/page2.html', test_id: 4 },
-                 { body: 'Какое свойство CSS определяет размер текста', test_id: 5 }])
+@question1 = @test1.questions.create(body: 'Что вернет 2.superclass в версии Ruby 3.0?')
+@question2 = @test2.questions.create(body: 'Команда для отката миграций назад и обратно')
+@question3 = @test3.questions.create(body: 'Чему равно значение выражения 4 - "5" + 0xf - "1e1"?')
+@question4 = @test4.questions.create(body: 'Каким является следующий адрес ссылки: pages/page2.html')
+@question5 = @test5.questions.create(body: 'Какое свойство CSS определяет размер текста')
 
-Answer.create([{ body: 'Fixnum', question_id: 1 },
-               { body: 'Integer', question_id: 1, correct: true },
-               { body: 'rails db:rollback', question_id: 2 },
-               { body: 'rails db:migrate:redo', question_id: 2, correct: true },
-               { body: 'Строке', question_id: 3 },
-               { body: 'Цифре', question_id: 3, correct: true },
-               { body: 'Абсолютным', question_id: 4 },
-               { body: 'Относительным', question_id: 4, correct: true },
-               { body: 'text-size', question_id: 5 },
-               { body: 'font-size', question_id: 5, correct: true }])
+@answer11 = @question1.answers.create(body: 'Fixnum')
+@answer12 = @question1.answers.create(body: 'Integer', correct: true)
+@answer21 = @question2.answers.create(body: 'rails db:rollback')
+@answer22 = @question2.answers.create(body: 'rails db:migrate:redo', correct: true)
+@answer31 = @question3.answers.create(body: 'Строке')
+@answer32 = @question3.answers.create(body: 'Цифре', correct: true)
+@answer41 = @question4.answers.create(body: 'Абсолютным')
+@answer42 = @question4.answers.create(body: 'Относительным', correct: true)
+@answer51 = @question5.answers.create(body: 'text-size')
+@answer52 = @question5.answers.create(body: 'font-size', correct: true)
+
+@user1.user_tests_histories.create(test: @test1, completed: true)
+@user1.user_tests_histories.create(test: @test3, completed: false)
+@user2.user_tests_histories.create(test: @test2, completed: true)

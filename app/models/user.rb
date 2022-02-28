@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  def completed_tests
-    # принимает в качестве аргумента значение уровня сложности и возвращает список всех Тестов,
-    # которые проходит или когда-либо проходил Пользователь на этом уровне сложности
+  has_many :user_tests_histories
+  has_many :tests, through: :user_tests_histories
+
+  def tests_history(test_level)
+    Test.joins(user_tests_histories: :user).where(users: { id: id }).where(level: test_level)
   end
 end
