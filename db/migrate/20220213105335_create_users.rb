@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.integer :score, default: 0
       t.integer :age, null: false
       t.string :email, null: false
+
       t.timestamps
     end
   end
