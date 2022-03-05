@@ -4,10 +4,6 @@ class User < ApplicationRecord
 
   has_many :created_tests, class_name: 'Test'
 
-  validates :name, presence: true
-  validates :age, presence: true, numericality: { only_integer: true }
-  validates :email, presence: true
-
   def started_tests_by_level(test_level)
     tests.where(level: test_level)
   end
