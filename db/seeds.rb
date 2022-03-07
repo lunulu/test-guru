@@ -26,6 +26,8 @@
 
 @question1.answers.create(body: 'Fixnum')
 @question1.answers.create(body: 'Integer', correct: true)
+@question1.answers.create(body: 'String')
+@question1.answers.create(body: 'Boolean')
 @question2.answers.create(body: 'rails db:rollback')
 @question2.answers.create(body: 'rails db:migrate:redo', correct: true)
 @question3.answers.create(body: 'Строке')

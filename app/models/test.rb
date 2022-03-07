@@ -10,10 +10,12 @@ class Test < ApplicationRecord
   scope :easy_level, -> { where(level: 0..1) }
   scope :medium_level, -> { where(level: 2..4) }
   scope :hard_level, -> { where(level: 5..Float::INFINITY) }
-  scope :all_by_category, lambda { |category_title|
-    joins(:category).where(categories: { title: category_title }).order(title: :desc)
-  }
+  scope :with_category, -> { joins(:category) }
 
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def self.all_by_category(category_title)
+    with_category.where(categories: { title: category_title }).order(title: :desc)
+  end
 end
