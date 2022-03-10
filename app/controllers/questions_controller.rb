@@ -8,19 +8,18 @@ class QuestionsController < ApplicationController
 
   def new; end
 
-  def create
-    # Тест не создается
-    question = Question.create(question_params)
-    render plain: question.inspect
-  end
-
   def show; end
+
+  def create
+    @test.questions.create(question_params)
+    redirect_to test_questions_url
+  end
 
   def destroy
     @question.destroy
 
     # Не работает редирект на страничку теста после удаления
-    redirect_to @test
+    redirect_to test_questions_url
   end
 
   private
@@ -30,7 +29,7 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = @test.questions.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def question_params
