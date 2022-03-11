@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[create index new]
+  before_action :find_test, only: %i[index new create]
   before_action :find_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
@@ -13,25 +13,22 @@ class QuestionsController < ApplicationController
   def create
     question = @test.questions.new(question_params)
     if question.save
-      # Всплывающее окно
+      redirect_to test_questions_url(test_id: @test.id)
     else
-      # Всплывающее окно
+      # TODO: Информировать пользователя о неудаче
+      render html: "<script>alert('No users!')</script>".html_safe
     end
-    redirect_to test_questions_url
   end
 
   def destroy
     @question.destroy
+    # TODO: Перенаправлять после удаления
   end
 
   private
 
   def find_test
-    @test = if params[:test_id]
-              Test.find(params[:test_id])
-            else
-              @question.test
-            end
+    @test = Test.find(params[:test_id])
   end
 
   def find_question
